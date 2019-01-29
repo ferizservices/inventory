@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> Upload records .... </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid text-center shadow-lg p-3 mb-5 bg-white rounded font-weight-bold">
+                <h1 class="text-success">Loading Form</h1>
+                <hr>
+                <div class="card text-left">
+                        <h5 class="card-header">Process Description</h5>
+                        <div class="card-body">
+                            <ol>
+                                <li> Define the table to populate </li>
+                                <li> 
+                                    Prepare a csv file (comma separated value) , the fields should have a specific order :
+                                    <ul> > Regarding the Application records , the fields must  have the following order : <span class="text-primary"> system name / systembusinessneed / system description / system technology / system provider /system owner / system status / system url / system category </span> </ul>
+                                    <ul> > Regarding the Script records , the fields must have the following order : <span class="text-primary"> script name / script description / script technology / business owner / execution frequency </span></ul>
+                                    <ul> > Regarding the Contract records , the fields must have the following order : <span class="text-primary"> contract reference / system name / contract renew type / contract cost /contract starting date / contract ending date / contract comment / contract year / contract dhl owner / contractinvoice / contractvendor </span></ul>
+                                </li>
+                                <li> Browse the file on your computer using the field below </li>
+                                <li> Select the destination table </li>
+                                <li> Click on "Load the file Selected" </li>
+                            </ol>
+                        </div>
+                </div>
+                <hr>
+                <div>
+                    <form method="POST" action="/upload" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="file" class="form-control-file" id="InputFile" name="InputFile">
+                                </div>
+                            </div>
+                            
+                            <div class="col">
+                                    <div class="input-group">
+                                            <select class="custom-select" id="inputTable" name="inputTable">
+                                              <option value="Application" selected>Application</option>
+                                              <option value="Script">Script</option>
+                                              <option value="Contract">Contract</option>
+                                            </select>
+                                          </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <button type="submit" class="btn btn-primary"> Load the file Selected </button>
+                       </div>
+                    </form>
+                 </div>
+                 <a href="{{url_for('menu')}}"> Go back to the menu </a>
+                <hr>
+            </div>
+        </div>
+        <br>
+        <div>
+            <!-- Simple Message -->
+            {% with mails = get_flashed_messages(category_filter=["message"]) %}
+            {% if mails %}
+            <div class="alert alert-success" role="alert">
+              <ul>
+                {%- for msg in mails %}
+                <li>{{ msg }}</li>
+                {% endfor -%}
+              </ul>
+            </div>
+            {% endif %}
+            {% endwith %}      
+      </div>
+        <!-- /#page-content-wrapper -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="static/jquery/jquery.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

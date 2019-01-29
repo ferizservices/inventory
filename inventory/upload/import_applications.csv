@@ -1,0 +1,48 @@
+﻿Adobe Pro DC,"DHL Digitization unit uses the Adobe Pro DC 
+software to digitize UN documents in six official 
+languages published between 1946 and 1992, which
+become uploaded to the Official Document System
+of the United Nation (ODS) for public access",Adobe products,Adobe,Digitalization,Production,XXXX,Software
+Alma/Primo (Dag Discovery),"Integrated resources management. Management of print, electronic and digital resources, including search across these collections. Purchase and administred in collaboration with Geneva and ECLAC
+",ALMA/Primo,EX-Libris,"Metadata Unit, Client Services, 
+Content Curation Unit",Production,XXXX,System
+Amazon Web services,Cloud hosting,AWS; S3; EC2; ,Amazon,ISS,Production,XXXX,PAAS; IAAS
+Canva,"Canva is a graphic-design tool website, founded in 2012. It uses a drag-and-drop format and provides access to over a million photographs, graphics, and fonts. It is used by non-designers as well as professionals. The tools can be used for both web and print media design and graphics.",Canva Product,Canva ,Outreach and Professional Development,Production,XXXX,Software
+"Consortia Manager
+","SAAS; Management of consortia members for the acquisiton of ER resources. The purchase of the system is self funded by UNSEIAC. IT support from DL Unit if needed.
+",Consortia Manager,Nels and Tejs,Content Curation Unit,Production,XXXX,online app
+DHL UNBIS Thesaurus,"DHL/DPI: The online Thesaurus is the authority file of subject and geographic name headings which constitute the controlled vocabulary for subject indexing and cataloguing of material in UNBISnet, the online Library catalogue.",Lotus Notes,Custom in house,DGC / DHL,Production,http://lib-thesaurus.un.org,Application
+DHL UN-I-QUE - United Nations Info Quest,"UN-I-QUE (UN Info Quest), a ready-reference file created by the Dag HammarskjÃ¶ld Library to respond to frequently asked questions, is designed to provide quick access to document symbols/sales numbers for UN materials (1946 onwards). It does not give full bibliographic details nor does it replace existing bibliographic databases (UNBISnet) produced by the Library. UN-I-QUE focuses upon documents and publications of a recurrent nature: annual/sessional reports of committees/commissions; annual publications; reports periodically/irregularly issued; reports of major conferences; statements in the General Debate; etc. Information within each record is presented in reverse chronological order to facilitate identification of the most recent data.",Lotus Notes,Custom in house,DGC / DHL,Production,https://lib-unique.un.org/,Application
+FlexiCapture Engine,"The software is crucial in improving the Library’s 
+digitization operations, particularly the labor 
+intensive basic metadata creation process. 
+Based on current uses, the software could
+increase the metadata creation speed up to 
+3 times faster. ",ABBYY products,ABBYY,Digitalization,Production,XXXX,Software
+Hootsuite,social media management,Hootsuite,Hootsuite,Outreach and Professional Development,Production,XXXX,Online service
+Horizon,"Horizon is integrated library system used by DHL. Its purpose is to maintain a list of book borrowers, manage library holdings, records all required library and assure transfer of relevant data to various library business units. This system is the core information source for UNBISNET.",COTS/Sybase,COTS with modifications,DGC/DHL,Production,XXXX,System
+JournalTOCs,"JournalTOCs is the largest, free collection of scholarly journal Tables of Contents (TOCs): 32,294 journals including 14,216 selected Open Access journals and 11,946 Hybrid journals, from 3314 publishers. JournalTOCs is for researchers, students, librarians and anyone looking for the latest scholarly articles.", JournalTOCs product,JournalTOCs,XXXX,Production,XXXX,XXXX
+MailChimp,"Mailchimp is a marketing automation platform and
+an email marketing service.",MailChimp products,MailChimp,Outreach and Professional Development,Production,XXXX,XXXX
+OpenAthens,OpenAthens is an identity and access management service.,XXXX,Eduserv,XXXX,Production,XXXX,XXXX
+Poolparty,LInked data platform for management of SKOS and ontologies,pool party products,Pool Party,IAMU,Production,https://www.poolparty.biz/,XXXX
+Proxy,An application that provides programmatic/API access to listings of search results from the UNDL in a non-MARC format. Useful for website administrators to find and embed or otherwise build listings of documents.,"Python/Flask application running on AWS Lambda and API Gateway, with an Amazon RDS backend.",ISS,ISS,Production,XXXX,XXXX
+Refworks,Juridical Yearbook bibliographies; other bibliographies on demand,Refworks,Proquest,Client services,Production,XXXX,XXXX
+Repository,"Repository of digital materials published by the United Nations. It is designed to be an easy-to-use interface to current and historical UN documents. It provides a safe environment to host and preserve the United Nations institutional memory: UN official documents of the main policy-making bodies, UN publications, UN maps, UN Archival collections, UN Multimedia collections.",DSpace,DSpace,XXXX,Production,http://repository.un.org/,XXXX
+research.un.org; ask.un.org,"Find answers about the UN.Web applications devleoped by Springshare, focusing on digital library services (statistics, training planning, scheduling of staff, reference services and research guides). Two applications have public-facing UI, Ask DAG and Research Guides. Both platform have also have internal functionalities to support online library services workflows. Ask DAG front-end is a curated database of questions and answers about the United Nations. Users can ask their own questions to be answered by librarians and eventually published. Research guides are curated topical lists of UN and library resources on UN related subjects. Back-end functionalities integrate assets management targeted to library resources and several other curation tools.",Springshare products,SpringShare,Client Services,Production,"http://research.un.org/
+ask.un.org/",XXXX
+Resolver,"An application that resolves UN document symbols and provides either links to PDFs, limited non-MARC metadata, or links to the item records in UNDL",Python/Flask application running on AWS Lambda and API Gateway.,ISS,ISS,Production,XXXX,XXXX
+Robotic Scanner,"By scanning up to 2,000 pages per hour, a robotic
+scanner can significantly improve DHL digitization
+operation. It is also designed to scan fragile 
+documents gently. As of October 31 2018, Joint 
+DHL/DGACM Digitization Project ended and 2 
+full-time staff members are currently working 
+for the scanning operation of UN documents in 
+DHL digitization team. Considering the staffing 
+situation in DHL digitization, the purchase of a 
+robotic scanner is strongly recommended",NA,NA,Digitalization,Production,XXXX,XXXX
+Surveymonkey,Library surveys,Surveymonkey,XXXX,Library-wide,Production,XXXX,XXXX
+UNBISNET,United Nations Bibliographic Information system; OPAC ( Online public access catalogue ) solution for searching DHL ILS,COTS / Sybase,COTS,DGC/DHL,Production,XXXX,XXXX
+UNDL,"Digital Library (UNDL) aims to provide efficient management and access to UN historical documents, publications, voting records, and speeches. Furthermore, it will be jointly used by DHL, UNOG and UNOV Libraries to manage UN digital collections. It will integrate Library operations for digitization and indexing. UNDL will use Invenio Digital Library software which is built by CERN Document Server Software. The new system will replace the current integrated Library System (Horizon 7.5.2/SirsiDynix) including its public interface unbisnet.un.org",Invenio,TIND,XXXX,Production,https://digitallibrary.un.org/,XXXX
+Zoom," Zoom offers communications software that combines video conferencing, online meetings, chat, and mobile collaboration",Zoom Product,Zoom Video Communications ,Outreach and Professional Development,Production,XXXX,XXXX

@@ -1,0 +1,13 @@
+em2ds.rb,Using a CSV file with a particular format batch create DSpace accounts.This script runs from the ec2 instance at dag.un.org as the linux user dspace,ruby,ISS,Weekly
+rhstats.py,With some criteria such as dates this script generates the periodic statistics DPKO uses in its C-34 reports covering downloads of materials from DSpace. It runs from the ec2 instance at dag.un.org as the linux user ec2-user,python,ISS,Monthly
+gstreamer2.py,"This is part of the gstream web application that is designed to update the DynamoDB  powering the accompanying Flask application. It runs locally from my machine
+but can be run from anywhere that has a python interpreter and is capable of creating virtual environments",python,ISS,Daily
+DigiBuilder,An application that allows Digitization Group to collect their documents and metadata through their normal processes and transform the metadata into a set of import or update files for inclusion into the UNDL,Python Flask application running on AWS Lambda and API Gateway with a DynamoDB backend,ISS,XXXX
+GStream,An application that provides a daily view of document symbols with issued releases that day. Capable also of displaying historical releases and aggregates over specified time periods. Useful in generating statistics,Python/Flask application running on AWS Lambda and API Gateway with a DynamoDB backend,ISS,XXXX
+metadata.un.org,"Replacement website for the UNBIS Thesaurus and future front-end for other UN system ontologies such as SDG Ontologies""",Python/Flask application running on Amazon EC2 (Linux AMI) with an Amazon RDS backend and Amazon Elasticsearch Service,ISS,XXXX
+to be define,MARC export from Horizon,Perl,ISS,XXXX
+to be define,Document file collection,Perl,ISS,XXXX
+to be define,Export to DL,Perl,ISS,Daily
+to be define,DL audit,Perl,ISS,XXXX
+to be define,Conversion of Excel to MARC,Perl,ISS,XXXX
+to be define,Conversion of voting info to MARC,Perl,ISS,XXXX
