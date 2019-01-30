@@ -74,14 +74,14 @@ class Script(db.Document):
 
 class BusinessFunction(db.Document):
     """ Definition of the class for the business function """
-    #businessname = db.StringField()
-    #businessneed = db.StringField()
-    #businessdescription = db.StringField()
-    #businessechnology = db.StringField()
-    #businessprovider = db.StringField()
-    #businessowner = db.StringField()
-    #businessstatus = db.StringField()
-    #businessurl = db.StringField()
+    businessname = db.StringField()
+    businessneed = db.StringField()
+    businessdescription = db.StringField()
+    businessechnology = db.StringField()
+    businessprovider = db.StringField()
+    businessowner = db.StringField()
+    businessstatus = db.StringField()
+    businessurl = db.StringField()
 
 ####################################################
 # Internal Process CLASS
@@ -89,11 +89,11 @@ class BusinessFunction(db.Document):
 
 class InternalProcess(db.Document):
     """ Definition of the class for the inetrnal process """
-    #ipname = db.StringField()
-    #ipdescription = db.StringField()
-    #ipunit = db.StringField()
-    #ipstatus = db.StringField()
-    #ipdocumented = db.StringField()
+    ipname = db.StringField()
+    ipdescription = db.StringField()
+    ipunit = db.StringField()
+    ipstatus = db.StringField()
+    ipdocumented = db.StringField()
 
 ####################################################
 # Contract CLASS

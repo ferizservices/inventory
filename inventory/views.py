@@ -5,7 +5,7 @@
 ####################################################
 
 from flask import render_template,request,session,url_for,redirect,flash
-from models import app,Utilisateur,Application,Script,Contract
+from models import app,Utilisateur,Application,Script,Contract,InternalProcess,BusinessFunction
 from werkzeug.utils import secure_filename
 import os
 import csv
@@ -47,7 +47,8 @@ def menu():
             myRecordApplication=calcRecord(Application)
             myRecordScript=calcRecord(Script)
             myRecordContract=calcRecord(Contract)
-            return render_template('index.html',myUsername=myUsername,myRecordUser=myRecordUser,myRecordApplication=myRecordApplication,myRecordScript=myRecordScript,myRecordContract=myRecordContract)
+            myRecordInternalProcess=calcRecord(InternalProcess)
+            return render_template('index.html',myUsername=myUsername,myRecordUser=myRecordUser,myRecordApplication=myRecordApplication,myRecordScript=myRecordScript,myRecordContract=myRecordContract,myRecordInternalProcess=myRecordInternalProcess)
         else:
             return render_template('login.html')   
     except:
@@ -97,79 +98,114 @@ def upload():
     if not os.path.isdir(target):
         os.mkdir(target)
 
-#try :
+    try :
 
-    file=request.files["InputFile"]
-    filename=file.filename
-    destination="/".join((target,filename))
-    file.save(destination)
+        file=request.files["InputFile"]
+        filename=file.filename
+        destination="/".join((target,filename))
+        file.save(destination)
 
-    myTable=request.form["inputTable"]
-    recImported=0
-    
-    # Management of the Scripts
-    if myTable=="Script" :
-        myFile=open(destination)
-        reader=csv.reader(myFile)
-        for row in reader:
-            myScript=Script()
-            myScript.scriptname=row[0]
-            myScript.scriptcategory=row[1]
-            myScript.scriptdescription=row[2]
-            myScript.scripttechnology=row[3]
-            myScript.businessowner=row[4]
-            myScript.executionfrequency=row[5]
-            myScript.technicalfirstfocalpoint=row[6]
-            myScript.save()
-            recImported+=1
-        flash('Congratulations, {} Script(s) records have been imported recently !!! '.format(recImported), 'message')
-        myFile.close()
-
-    # Management of the Applications
-    if myTable=="Application" :
-        myFile=open(destination)
-        reader=csv.reader(myFile)
-        for row in reader:
-            myApplication=Application()
-            myApplication.systemname=row[0]
-            myApplication.systembusinessneed=row[1]
-            myApplication.systemdescription=row[2]
-            myApplication.systemtechnology=row[3]
-            myApplication.systemprovider=row[4]
-            myApplication.systemowner=row[5]
-            myApplication.systemstatus=row[6]
-            myApplication.systemurl=row[7]
-            myApplication.systemcategory=row[8]
-            myApplication.save()
-            recImported+=1
-        flash('Congratulations, {} Application(s) records have been imported recently !!! '.format(recImported), 'message')
-        myFile.close()
+        myTable=request.form["inputTable"]
+        recImported=0
         
-    # Management of the Contracts
-    if myTable=="Contract" :
-        myFile=open(destination)
-        reader=csv.reader(myFile)
-        for row in reader:
-            myContract=Contract()
-            myContract.contractref=row[0]
-            myContract.systemname=row[1]
-            myContract.contractrenewtype=row[2]
-            myContract.contractcost=row[3]
-            myContract.contractstartingdate=row[4]
-            myContract.contractendingdate=row[5]
-            myContract.contractcomment=row[6]
-            myContract.contractyear=row[7]
-            myContract.contractdhlowner=row[8]
-            myContract.contractinvoice=row[9]
-            myContract.contractvendor=row[10]
-            myContract.save()
-            recImported+=1
-        flash('Congratulations, {} Contract(s) records have been imported recently !!! '.format(recImported), 'message')
-        myFile.close()
+        # Management of the Scripts
+        if myTable=="Script" :
+            myFile=open(destination)
+            reader=csv.reader(myFile)
+            for row in reader:
+                myScript=Script()
+                myScript.scriptname=row[0]
+                myScript.scriptcategory=row[1]
+                myScript.scriptdescription=row[2]
+                myScript.scripttechnology=row[3]
+                myScript.businessowner=row[4]
+                myScript.executionfrequency=row[5]
+                myScript.technicalfirstfocalpoint=row[6]
+                myScript.save()
+                recImported+=1
+            flash('Congratulations, {} Script(s) records have been imported recently !!! '.format(recImported), 'message')
+            myFile.close()
 
-#except:
-#    flash('Sorry, check the inputs of the importation process !!! ', 'error')
-#    return redirect(url_for('menu'))
+        # Management of the Applications
+        if myTable=="Application" :
+            myFile=open(destination)
+            reader=csv.reader(myFile)
+            for row in reader:
+                myApplication=Application()
+                myApplication.systemname=row[0]
+                myApplication.systembusinessneed=row[1]
+                myApplication.systemdescription=row[2]
+                myApplication.systemtechnology=row[3]
+                myApplication.systemprovider=row[4]
+                myApplication.systemowner=row[5]
+                myApplication.systemstatus=row[6]
+                myApplication.systemurl=row[7]
+                myApplication.systemcategory=row[8]
+                myApplication.save()
+                recImported+=1
+            flash('Congratulations, {} Application(s) records have been imported recently !!! '.format(recImported), 'message')
+            myFile.close()
+            
+        # Management of the Contracts
+        if myTable=="Contract" :
+            myFile=open(destination)
+            reader=csv.reader(myFile)
+            for row in reader:
+                myContract=Contract()
+                myContract.contractref=row[0]
+                myContract.systemname=row[1]
+                myContract.contractrenewtype=row[2]
+                myContract.contractcost=row[3]
+                myContract.contractstartingdate=row[4]
+                myContract.contractendingdate=row[5]
+                myContract.contractcomment=row[6]
+                myContract.contractyear=row[7]
+                myContract.contractdhlowner=row[8]
+                myContract.contractinvoice=row[9]
+                myContract.contractvendor=row[10]
+                myContract.save()
+                recImported+=1
+            flash('Congratulations, {} Contract(s) records have been imported recently !!! '.format(recImported), 'message')
+            myFile.close()
+
+        # Management of the Internal Process
+        if myTable=="InternalProcess" :
+            myFile=open(destination)
+            reader=csv.reader(myFile)
+            for row in reader:
+                myInternalProcess=InternalProcess()
+                myInternalProcess.ipname=row[0]
+                myInternalProcess.ipdescription=row[1]
+                myInternalProcess.ipunit=row[2]
+                myInternalProcess.ipstatus=row[3]
+                myInternalProcess.ipdocumented=row[4]
+                myInternalProcess.save()
+                recImported+=1
+            flash('Congratulations, {} Internal process(es) records have been imported recently !!! '.format(recImported), 'message')
+            myFile.close()
+
+        # Management of the Business Function
+        if myTable=="Business Function" :
+            myFile=open(destination)
+            reader=csv.reader(myFile)
+            for row in reader:
+                myBusinessFunction=BusinessFunction()
+                myBusinessFunction.businessname=row[0]
+                myBusinessFunction.businessneed=row[1]
+                myBusinessFunction.businessdescription=row[2]
+                myBusinessFunction.businessechnology=row[3]
+                myBusinessFunction.businessprovider=row[4]
+                myBusinessFunction.businessowner=row[5]
+                myBusinessFunction.businessstatus=row[6]
+                myBusinessFunction.businessurl=row[7]            
+                myBusinessFunction.save()
+                recImported+=1
+            flash('Congratulations, {} Business Functions records have been imported recently !!! '.format(recImported), 'message')
+            myFile.close()
+
+    except:
+        flash('Sorry, check the inputs of the importation process !!! ', 'error')
+        return redirect(url_for('menu'))
 
     return redirect(url_for('menu'))
  
@@ -614,3 +650,200 @@ def deleteContract(contractref):
             return render_template('login.html')
     except:
         return redirect(url_for('appError'))
+
+####################################################
+# INTERNAL PROCESS
+####################################################  
+
+@app.route("/listeinternalprocess")
+def listeInternalProcess():
+    """ Display the list of internal process """
+    try:      
+        if "username" in session:
+            myInternalProcess=InternalProcess.query.all()
+            total=0
+            for rec in myInternalProcess:
+                total=total+1
+            myRecord=total
+            return render_template('listeinternalprocess.html',myInternalProcess=myInternalProcess,myRecord=myRecord)
+        else:
+            flash('Unknown user !!! ','error')
+            return render_template('login.html')   
+    except:
+        return redirect(url_for('appError'))
+
+@app.route("/createinternalprocess", methods=['GET', 'POST'])
+def createInternalProcess():
+    """ Internal Process creation """
+    try:      
+        if "username" in session:
+            if request.method == 'POST':
+                myInternalProcess=InternalProcess(
+                    ipname=request.form["inputInternalProcessName"],
+                    ipdescription=request.form["inputInternalProcessDescription"],
+                    ipunit=request.form["inputInternalProcessUnit"],
+                    ipstatus = request.form["inputInternalProcessStatus"],
+                    ipdocumented=request.form["inputInternalProcessDocumented"])
+                myInternalProcess.save()
+                flash('Internal Process saved !!! ', 'message')
+                return redirect(url_for('listeInternalProcess'))
+            if request.method == 'GET':
+                return render_template('createinternalprocess.html')
+        else:
+            flash('Unknown user !!! ','error')
+            return render_template('login.html')
+    except:
+        return redirect(url_for('appError'))
+
+@app.route("/updateinternalprocess", methods=['POST'])
+def updateInternalProcess():
+    """ Internal Process update """
+    try: 
+        if "username" in session:
+            myInternalProcess= InternalProcess.query.filter(InternalProcess.ipname==ipname).first()
+            myInternalProcess.ipname=request.form["inputInternalProcessName"]
+            myInternalProcess.ipdescription=request.form["inputInternalProcessDescription"]
+            myInternalProcess.ipunit=request.form["inputInternalProcessUnit"]
+            myInternalProcess.ipstatus=request.form["inputInternalProcessStatus"]
+            myInternalProcess.ipdocumented=request.form["inputInternalProcessDocumented"]
+            myInternalProcess.save()
+            flash('Internal Process updated !!! ', 'message')
+            return redirect(url_for('listeInternalProcess'))
+        else:
+            flash('Unknown user !!! ','error')
+            return render_template('login.html')
+    except:
+        return redirect(url_for('appError'))
+
+#update the internal process
+@app.route("/displayinternalprocess/<ipname>", methods=['GET'])
+def displayInternalProcess(ipname):
+    """ Display one internal process record """
+    try: 
+        if "username" in session:
+            if request.method == 'GET':
+                session["ipname"]=ipname
+                myInternalProcess=InternalProcess.query.filter(InternalProcess.ipname==ipname).first()
+                return render_template('updateinternalprocess.html',myInternalProcess=myInternalProcess)
+        else:
+            flash('Unknown user !!! ','error')
+            return render_template('login.html')
+    except:
+        return redirect(url_for('appError'))
+
+
+#delete the internal process
+@app.route("/deleteinternalprocess/<ipname>", methods=['GET'])
+def deleteInternalProcess(ipname):
+    """ internal process deletion """
+    try: 
+        if "username" in session:
+            if request.method == 'GET':
+                myInternalProcess=InternalProcess.query.filter(InternalProcess.ipname==ipname).first()
+                myInternalProcess.remove()
+                flash('Internal process deleted !!! ', 'message')
+                return redirect(url_for('listeInternalProcess'))
+        else:
+            flash('Unknown user !!! ','error')
+            return render_template('login.html')
+    except:
+        return redirect(url_for('appError'))
+
+####################################################
+# BUSINESS FUNCTION PROCESS
+####################################################  
+
+@app.route("/listebusinessfunction")
+def listeBusinessFunction():
+    """ Display the list of business function """
+    try:      
+        if "username" in session:
+            myBusinessFunction = BusinessFunction.query.all()
+            total=0
+            for rec in myBusinessFunction:
+                total=total+1
+            myRecord=total
+            return render_template('listebusinessfunction.html',myBusinessFunction=myBusinessFunction,myRecord=myRecord)
+        else:
+            flash('Unknown user !!! ','error')
+            return render_template('login.html')   
+    except:
+        return redirect(url_for('appError'))
+
+@app.route("/createbusinessfunction", methods=['GET', 'POST'])
+def createBusinessFunction():
+    """ Internal Business Function """
+    try:      
+        if "username" in session:
+            if request.method == 'POST':
+                myBusinessFunction=BusinessFunction(
+                    ipname=request.form["inputInternalProcessName"],
+                    ipdescription=request.form["inputInternalProcessDescription"],
+                    ipunit=request.form["inputInternalProcessUnit"],
+                    ipstatus = request.form["inputInternalProcessStatus"],
+                    ipdocumented=request.form["inputInternalProcessDocumented"])
+                myInternalProcess.save()
+                flash('Internal Process saved !!! ', 'message')
+                return redirect(url_for('listeInternalProcess'))
+            if request.method == 'GET':
+                return render_template('createinternalprocess.html')
+        else:
+            flash('Unknown user !!! ','error')
+            return render_template('login.html')
+    except:
+        return redirect(url_for('appError'))
+
+@app.route("/updateinternalprocess", methods=['POST'])
+def updateInternalProcess():
+    """ Internal Process update """
+    try: 
+        if "username" in session:
+            myInternalProcess= InternalProcess.query.filter(InternalProcess.ipname==ipname).first()
+            myInternalProcess.ipname=request.form["inputInternalProcessName"]
+            myInternalProcess.ipdescription=request.form["inputInternalProcessDescription"]
+            myInternalProcess.ipunit=request.form["inputInternalProcessUnit"]
+            myInternalProcess.ipstatus=request.form["inputInternalProcessStatus"]
+            myInternalProcess.ipdocumented=request.form["inputInternalProcessDocumented"]
+            myInternalProcess.save()
+            flash('Internal Process updated !!! ', 'message')
+            return redirect(url_for('listeInternalProcess'))
+        else:
+            flash('Unknown user !!! ','error')
+            return render_template('login.html')
+    except:
+        return redirect(url_for('appError'))
+
+#update the internal process
+@app.route("/displayinternalprocess/<ipname>", methods=['GET'])
+def displayInternalProcess(ipname):
+    """ Display one internal process record """
+    try: 
+        if "username" in session:
+            if request.method == 'GET':
+                session["ipname"]=ipname
+                myInternalProcess=InternalProcess.query.filter(InternalProcess.ipname==ipname).first()
+                return render_template('updateinternalprocess.html',myInternalProcess=myInternalProcess)
+        else:
+            flash('Unknown user !!! ','error')
+            return render_template('login.html')
+    except:
+        return redirect(url_for('appError'))
+
+
+#delete the internal process
+@app.route("/deleteinternalprocess/<ipname>", methods=['GET'])
+def deleteInternalProcess(ipname):
+    """ internal process deletion """
+    try: 
+        if "username" in session:
+            if request.method == 'GET':
+                myInternalProcess=InternalProcess.query.filter(InternalProcess.ipname==ipname).first()
+                myInternalProcess.remove()
+                flash('Internal process deleted !!! ', 'message')
+                return redirect(url_for('listeInternalProcess'))
+        else:
+            flash('Unknown user !!! ','error')
+            return render_template('login.html')
+    except:
+        return redirect(url_for('appError'))
+
